@@ -1,0 +1,1427 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apology Letter, for youuu</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <style>
+    :root {
+      --bg-dark: #120d0b;          /* Deep 3D Espresso Dark Background */
+      --card-bg: #1d1410;          /* 3D Layered Card Roast */
+      --americano-primary: #d4935f;/* 3D Gold Caramel Accent */
+      --americano-soft: #f0c3a5;   /* Soft Crema Highlight */
+      --text-white: #fdfbf7;       /* 3D Warm White Text */
+      --text-muted: #b59f93;       /* Muted Brown Bean */
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    body {
+      background: radial-gradient(circle at 50% 20%, #2a1a14 0%, var(--bg-dark) 70%);
+      color: var(--text-white);
+      overflow-x: hidden;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    .bg-elements {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .bg-flower {
+      position: absolute;
+      font-size: 24px;
+      opacity: 0.15;
+      animation: floatAround 14s infinite linear;
+    }
+
+    @keyframes floatAround {
+      0% { transform: translateY(0) rotate(0deg) scale(0.9); }
+      50% { transform: translateY(-40px) rotate(180deg) scale(1.1); }
+      100% { transform: translateY(0) rotate(360deg) scale(0.9); }
+    }
+
+    .content-wrapper {
+      position: relative;
+      z-index: 2;
+    }
+
+    .screen-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(18, 13, 11, 0.95);
+      backdrop-filter: blur(12px);
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    .flower-spinner {
+      font-size: 46px;
+      animation: spin 3s linear infinite;
+      margin-bottom: 25px;
+      filter: drop-shadow(0 0 12px rgba(212, 147, 95, 0.5));
+    }
+
+    @keyframes spin {
+      100% { transform: rotate(360deg); }
+    }
+
+    .script-font {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.4rem;
+      color: var(--americano-soft);
+      text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+    }
+
+    .keypad-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      margin-top: 25px;
+      width: 270px;
+    }
+
+    .key-btn {
+      width: 65px;
+      height: 65px;
+      border-radius: 50%;
+      background: linear-gradient(145deg, #251b17, #17100e);
+      border: 1px solid rgba(212, 147, 95, 0.2);
+      color: white;
+      font-size: 1.3rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: auto;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.5), inset 0 2px 4px rgba(255,255,255,0.05);
+      transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .key-btn:hover {
+      background: linear-gradient(145deg, #382822, #201512);
+      border-color: var(--americano-primary);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(212, 147, 95, 0.3);
+    }
+
+    .key-btn:active {
+      transform: translateY(1px);
+    }
+
+    .dots-indicator {
+      display: flex;
+      gap: 14px;
+      margin: 22px 0;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: 2px solid var(--americano-primary);
+      background: transparent;
+      transition: all 0.3s ease;
+    }
+
+    .dot.filled {
+      background-color: var(--americano-primary);
+      box-shadow: 0 0 10px var(--americano-primary);
+      transform: scale(1.1);
+    }
+
+    .gift-container {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .gift-box {
+      width: 120px;
+      height: 120px;
+      background: linear-gradient(135deg, #d4935f, #a06337);
+      border-radius: 20px;
+      position: relative;
+      cursor: pointer;
+      margin: 35px 0;
+      animation: bounce 2s infinite ease-in-out;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 15px 35px rgba(212, 147, 95, 0.4), inset 0 3px 6px rgba(255,255,255,0.3);
+      z-index: 5;
+      transition: transform 0.3s ease;
+    }
+
+    .gift-box:hover {
+      transform: scale(1.08);
+    }
+
+    .gift-box:active {
+      transform: scale(0.92);
+    }
+
+    .gift-box::before {
+      content: '';
+      position: absolute;
+      width: 26px;
+      height: 100%;
+      background: linear-gradient(90deg, #f5deb3, #d4b58c);
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+
+    .gift-box::after {
+      content: '';
+      position: absolute;
+      height: 26px;
+      width: 100%;
+      background: linear-gradient(180deg, #f5deb3, #d4b58c);
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    .flower-particle {
+      position: absolute;
+      pointer-events: none;
+      font-size: 28px;
+      z-index: 10;
+      opacity: 1;
+      animation: flowerBurst 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    }
+
+    @keyframes flowerBurst {
+      0% {
+        transform: translate(0, 0) scale(0.4) rotate(0deg);
+        opacity: 1;
+      }
+      70% {
+        opacity: 0.9;
+      }
+      100% {
+        transform: translate(var(--tx), var(--ty)) scale(1.6) rotate(var(--rot));
+        opacity: 0;
+      }
+    }
+
+    section {
+      padding: 70px 20px;
+      max-width: 720px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .section-tagline {
+      font-size: 0.75rem;
+      letter-spacing: 3px;
+      color: var(--americano-soft);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      color: var(--text-white);
+      margin-bottom: 30px;
+      line-height: 1.4;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+
+    h1.hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.8rem;
+      line-height: 1.1;
+      margin-bottom: 12px;
+      background: linear-gradient(180deg, #ffffff 30%, #d4935f 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 4px 15px rgba(0,0,0,0.5));
+    }
+
+    .coffee-cup-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 30px auto 20px auto;
+      position: relative;
+    }
+
+    .coffee-steam-row {
+      display: flex;
+      gap: 22px;
+      margin-bottom: 5px;
+    }
+
+    .steam {
+      font-size: 1.3rem;
+      animation: floatSteam 2s infinite ease-in-out;
+      opacity: 0.7;
+    }
+
+    .steam:nth-child(2) { animation-delay: 0.6s; }
+    .steam:nth-child(3) { animation-delay: 1.2s; }
+
+    @keyframes floatSteam {
+      0% { transform: translateY(0) scale(0.8); opacity: 0.2; }
+      50% { transform: translateY(-12px) scale(1.15); opacity: 0.8; }
+      100% { transform: translateY(-24px) scale(1); opacity: 0; }
+    }
+
+    .coffee-cup-wrapper {
+      position: relative;
+      display: inline-block;
+      filter: drop-shadow(0 15px 25px rgba(0,0,0,0.6));
+    }
+
+    .coffee-cup {
+      width: 140px;
+      height: 95px;
+      background: linear-gradient(135deg, #9a6d44, #5c3a21);
+      border-radius: 0 0 55px 55px;
+      position: relative;
+      border: 3px solid #f0c3a5;
+      border-top: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: inset 0 -10px 20px rgba(0,0,0,0.5);
+    }
+
+    .coffee-cup::after {
+      content: '';
+      position: absolute;
+      top: 6px;
+      width: 122px;
+      height: 18px;
+      background: linear-gradient(135deg, #3d2514, #22120a);
+      border-radius: 50%;
+      box-shadow: inset 0 3px 6px rgba(0,0,0,0.8);
+    }
+
+    .cup-handle {
+      position: absolute;
+      right: -32px;
+      top: 15px;
+      width: 32px;
+      height: 52px;
+      border: 5px solid #f0c3a5;
+      border-left: none;
+      border-radius: 0 26px 26px 0;
+      box-shadow: 4px 4px 10px rgba(0,0,0,0.4);
+    }
+
+    .letter-card {
+      background: linear-gradient(145deg, #201511, #160f0d);
+      border-radius: 24px;
+      padding: 45px 35px;
+      text-align: left;
+      line-height: 1.9;
+      border: 1px solid rgba(212, 147, 95, 0.25);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), inset 0 1px 4px rgba(255,255,255,0.08);
+    }
+
+    .bouquet-container {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      gap: 22px;
+      height: 180px;
+      margin-top: 30px;
+    }
+
+    .flower-item {
+      cursor: pointer;
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.3s ease;
+      font-size: 3rem;
+      user-select: none;
+      filter: drop-shadow(0 8px 15px rgba(0,0,0,0.5));
+    }
+
+    .flower-item:hover, .flower-item.active {
+      transform: translateY(-18px) scale(1.25);
+      filter: drop-shadow(0 0 20px rgba(240, 195, 165, 0.9));
+    }
+
+    .flower-card-message {
+      margin: 25px auto;
+      max-width: 480px;
+      padding: 20px 25px;
+      background: rgba(212, 147, 95, 0.06);
+      border: 1px dashed var(--americano-soft);
+      border-radius: 18px;
+      color: #fff;
+      font-style: italic;
+      min-height: 75px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.3s ease;
+      box-shadow: inset 0 2px 6px rgba(0,0,0,0.3);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+      margin-top: 25px;
+    }
+
+    @media (max-width: 600px) {
+      .gallery-grid { grid-template-columns: 1fr; }
+    }
+
+    .class-polaroid-card {
+      background: #fdfbf7;
+      color: #222;
+      padding: 16px 16px 20px 16px;
+      border-radius: 12px;
+      cursor: pointer;
+      position: relative;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.5), 0 5px 15px rgba(0,0,0,0.3);
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+    }
+
+    .class-polaroid-card:hover {
+      transform: translateY(-8px) rotate(1deg);
+      box-shadow: 0 20px 45px rgba(212, 147, 95, 0.3);
+    }
+
+    .class-polaroid-img-frame {
+      width: 100%;
+      height: 220px;
+      background: linear-gradient(135deg, #e5dfd9, #d0c8be);
+      border-radius: 6px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      box-shadow: inset 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .class-overlay-content {
+      margin-top: 12px;
+      font-size: 0.85rem;
+      color: #777;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      font-weight: 500;
+    }
+
+    .class-polaroid-caption {
+      margin-top: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .class-polaroid-title {
+      font-weight: 700;
+      color: #9a6d44;
+      font-size: 1.05rem;
+    }
+
+    .class-polaroid-romance {
+      font-size: 0.82rem;
+      color: #555;
+      font-style: italic;
+    }
+
+    .timeline-section {
+      position: relative;
+      margin: 30px auto;
+      padding-left: 24px;
+      text-align: left;
+      max-width: 580px;
+    }
+
+    .timeline-line {
+      position: absolute;
+      left: 7px;
+      top: 15px;
+      bottom: 15px;
+      width: 3px;
+      background: linear-gradient(to bottom, var(--americano-primary), rgba(212, 147, 95, 0.15));
+      border-radius: 2px;
+    }
+
+    .class-timeline-item {
+      position: relative;
+      margin-bottom: 18px;
+      cursor: pointer;
+    }
+
+    .class-timeline-dot {
+      position: absolute;
+      left: -24px;
+      top: 24px;
+      width: 12px;
+      height: 12px;
+      background: var(--americano-primary);
+      border-radius: 50%;
+      border: 3px solid var(--bg-dark);
+      box-shadow: 0 0 10px var(--americano-primary);
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .class-timeline-item.active .class-timeline-dot {
+      transform: scale(1.5);
+      background: #fff;
+    }
+
+    .class-timeline-card {
+      background: linear-gradient(145deg, #221612, #18100d);
+      padding: 20px 24px;
+      border-radius: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 1px 3px rgba(255,255,255,0.05);
+      transition: all 0.3s ease;
+    }
+
+    .class-timeline-card:hover {
+      background: linear-gradient(145deg, #2c1d18, #201411);
+      border-color: rgba(212, 147, 95, 0.35);
+      box-shadow: 0 15px 35px rgba(212, 147, 95, 0.15);
+    }
+
+    .class-timeline-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .class-timeline-header h3 {
+      color: #f5deb3;
+      font-size: 1.1rem;
+      font-weight: 600;
+      flex-grow: 1;
+      margin-left: 12px;
+    }
+
+    .timeline-icon { font-size: 1.2rem; }
+
+    .chevron-icon {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      transition: transform 0.3s ease;
+    }
+
+    .class-timeline-item.active .chevron-icon {
+      transform: rotate(90deg);
+      color: var(--americano-primary);
+    }
+
+    .class-timeline-preview {
+      font-size: 0.88rem;
+      color: #b59f93;
+      margin-top: 6px;
+      margin-left: 32px;
+    }
+
+    .class-timeline-full-text {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.4s cubic-bezier(0, 1, 0, 1), opacity 0.3s ease, margin 0.3s ease;
+      font-size: 0.88rem;
+      color: #e5dfd9;
+      line-height: 1.7;
+      margin-left: 32px;
+    }
+
+    .class-timeline-item.active .class-timeline-full-text {
+      max-height: 220px;
+      opacity: 1;
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px dashed rgba(255, 255, 255, 0.1);
+    }
+
+    .player-card {
+      background: linear-gradient(145deg, #221612, #17100e);
+      padding: 40px 30px;
+      border-radius: 28px;
+      max-width: 520px;
+      margin: 0 auto;
+      border: 1px solid rgba(212, 147, 95, 0.35);
+      box-shadow: 0 25px 60px rgba(0,0,0,0.8), inset 0 2px 5px rgba(255,255,255,0.08);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .coffee-scene-frame {
+      position: relative;
+      background: radial-gradient(circle at 50% 50%, #35231c 0%, #100806 100%);
+      border-radius: 22px;
+      padding: 35px 25px;
+      margin: 24px 0;
+      border: 1px solid rgba(212, 147, 95, 0.25);
+      box-shadow: inset 0 8px 30px rgba(0,0,0,0.9), 0 10px 25px rgba(0,0,0,0.5);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .coffee-shop-ambience {
+      position: absolute;
+      top: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.72rem;
+      color: var(--americano-soft);
+      letter-spacing: 2.5px;
+      opacity: 0.8;
+      font-weight: 600;
+    }
+
+    .character-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .character-avatar {
+      width: 85px;
+      height: 85px;
+      border-radius: 50%;
+      background: linear-gradient(145deg, #b8865c, #6d472a);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.8rem;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.7), 0 0 0 4px rgba(212, 147, 95, 0.4), inset 0 3px 6px rgba(255,255,255,0.3);
+      position: relative;
+      animation: subtleFloat 4s infinite ease-in-out alternate;
+    }
+
+    .character-container:nth-child(3) .character-avatar {
+      background: linear-gradient(145deg, #e8b898, #9a6d44);
+      animation-delay: 2s;
+    }
+
+    @keyframes subtleFloat {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-8px); }
+    }
+
+    .character-name {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--text-white);
+      letter-spacing: 1px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    }
+
+    .table-setup-center {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .steam-group {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 6px;
+    }
+
+    .steam-line {
+      font-size: 0.95rem;
+      animation: steamAnimation 2s infinite ease-in-out;
+      opacity: 0.7;
+    }
+
+    .steam-line:nth-child(2) { animation-delay: 0.7s; }
+
+    @keyframes steamAnimation {
+      0% { transform: translateY(0) scale(0.7); opacity: 0.1; }
+      50% { transform: translateY(-12px) scale(1.15); opacity: 0.9; }
+      100% { transform: translateY(-24px) scale(0.9); opacity: 0; }
+    }
+
+    .shared-coffee-cup {
+      font-size: 2.8rem;
+      filter: drop-shadow(0 8px 15px rgba(0,0,0,0.8));
+      animation: cupPulse 3s infinite ease-in-out;
+    }
+
+    @keyframes cupPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+
+    .apology-heart-badge {
+      position: absolute;
+      top: -18px;
+      font-size: 1.3rem;
+      animation: heartBeat 1.8s infinite ease-in-out;
+    }
+
+    @keyframes heartBeat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.3); filter: drop-shadow(0 0 10px #d4935f); }
+    }
+
+    .jar-wrapper {
+      position: relative;
+      width: 170px;
+      height: 230px;
+      margin: 35px auto 12px auto;
+      cursor: pointer;
+      user-select: none;
+      filter: drop-shadow(0 15px 30px rgba(0,0,0,0.6));
+    }
+
+    .jar-lid {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 95px;
+      height: 24px;
+      background: linear-gradient(135deg, #e2b083, #8c5d37);
+      border-radius: 10px 10px 4px 4px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.4), inset 0 2px 4px rgba(255,255,255,0.4);
+      z-index: 4;
+      transition: transform 0.4s ease, top 0.4s ease;
+    }
+
+    .jar-neck {
+      position: absolute;
+      top: 22px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 105px;
+      height: 16px;
+      background: rgba(255, 255, 255, 0.12);
+      border: 2px solid rgba(255, 255, 255, 0.35);
+      border-bottom: none;
+      border-radius: 4px 4px 0 0;
+      z-index: 3;
+    }
+
+    .jar-body {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 150px;
+      height: 190px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.22), rgba(255,255,255,0.04));
+      border: 2px solid rgba(255, 255, 255, 0.4);
+      border-radius: 18px 18px 35px 35px;
+      box-shadow: inset 0 0 25px rgba(255, 255, 255, 0.12), 0 15px 35px rgba(0,0,0,0.6);
+      backdrop-filter: blur(6px);
+      overflow: hidden;
+      z-index: 2;
+      display: flex;
+      flex-wrap: wrap;
+      align-content: flex-end;
+      justify-content: center;
+      padding: 14px;
+      gap: 9px;
+    }
+
+    .coffee-bean-item {
+      font-size: 1.4rem;
+      transform: rotate(calc(var(--r, 0) * 1deg));
+      filter: drop-shadow(0 3px 4px rgba(0,0,0,0.5));
+    }
+
+    .jar-wrapper.shake {
+      animation: jarShake 0.5s ease-in-out;
+    }
+
+    @keyframes jarShake {
+      0%, 100% { transform: rotate(0deg); }
+      20% { transform: rotate(-12deg) translateX(-6px); }
+      40% { transform: rotate(12deg) translateX(6px); }
+      60% { transform: rotate(-8deg) translateX(-4px); }
+      80% { transform: rotate(8deg) translateX(4px); }
+    }
+
+    .jar-wrapper.open .jar-lid {
+      top: -35px;
+      transform: translateX(-50%) rotate(-22deg);
+    }
+
+    .flying-bean {
+      position: fixed;
+      font-size: 2.2rem;
+      z-index: 999;
+      pointer-events: none;
+      transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .jar-pop-card {
+      background: linear-gradient(145deg, #221612, #18100d);
+      border: 1px solid var(--americano-primary);
+      border-radius: 20px;
+      padding: 26px 30px;
+      margin: 25px auto 0 auto;
+      max-width: 500px;
+      box-shadow: 0 15px 40px rgba(212, 147, 95, 0.35);
+      opacity: 0;
+      transform: translateY(20px) scale(0.95);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      pointer-events: none;
+    }
+
+    .jar-pop-card.active {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      pointer-events: auto;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #d4935f, #a06337);
+      color: white;
+      border: none;
+      padding: 14px 34px;
+      border-radius: 30px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(212, 147, 95, 0.4), inset 0 2px 4px rgba(255,255,255,0.3);
+      transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px) scale(1.04);
+      box-shadow: 0 15px 30px rgba(212, 147, 95, 0.6);
+      background: linear-gradient(135deg, #e0a370, #b06f40);
+    }
+
+    .btn-primary:active {
+      transform: translateY(1px);
+    }
+
+    /* Floating Music Button Styling */
+    #music-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+      background: rgba(29, 20, 16, 0.85);
+      border: 1px solid var(--americano-primary);
+      color: var(--text-white);
+      padding: 10px 16px;
+      border-radius: 50px;
+      cursor: pointer;
+      backdrop-filter: blur(5px);
+      font-size: 0.82rem;
+      font-weight: 600;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+      transition: transform 0.2s;
+    }
+    #music-btn:hover {
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Audio Latar Belakang menggunakan file kamu -->
+  <audio id="bg-music" loop>
+    <source src="youlany.mp3.aac" type="audio/aac">
+    Browser kamu tidak mendukung pemutaran audio.
+  </audio>
+
+  <!-- Tombol Kontrol Musik Melayang di Pojok Kanan Atas -->
+  <button onclick="toggleMusic()" id="music-btn">🎵 Putar "You" - LANY</button>
+
+  <div class="bg-elements">
+    <div class="bg-flower" style="top: 10%; left: 8%;">☕</div>
+    <div class="bg-flower" style="top: 25%; right: 10%;">🤎</div>
+    <div class="bg-flower" style="top: 60%; left: 5%;">✨</div>
+    <div class="bg-flower" style="top: 80%; right: 8%;">☕</div>
+  </div>
+
+  <div class="content-wrapper">
+
+    <div id="screen-loading" class="screen-overlay">
+      <div class="flower-spinner">☕</div>
+      <div class="script-font">loading permintaan maaf buat kamuu...</div>
+    </div>
+
+    <div id="screen-lock" class="screen-overlay hidden">
+      <h2 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; text-shadow: 0 2px 8px rgba(0,0,0,0.5);">for annoying boy</h2>
+      <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 8px;">masukkan kode rahasia (hayoo tau ga?) ✨</p>
+      
+      <div class="dots-indicator">
+        <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+        <div class="dot"></div><div class="dot"></div>
+      </div>
+
+      <div class="keypad-grid">
+        <button class="key-btn" onclick="pressKey('1')">1</button>
+        <button class="key-btn" onclick="pressKey('2')">2</button>
+        <button class="key-btn" onclick="pressKey('3')">3</button>
+        <button class="key-btn" onclick="pressKey('4')">4</button>
+        <button class="key-btn" onclick="pressKey('5')">5</button>
+        <button class="key-btn" onclick="pressKey('6')">6</button>
+        <button class="key-btn" onclick="pressKey('7')">7</button>
+        <button class="key-btn" onclick="pressKey('8')">8</button>
+        <button class="key-btn" onclick="pressKey('9')">9</button>
+        <button class="key-btn" onclick="clearKey()">✕</button>
+        <button class="key-btn" onclick="pressKey('0')">0</button>
+        <button class="key-btn" onclick="submitPasscode()">↵</button>
+      </div>
+    </div>
+
+    <div id="screen-gift" class="screen-overlay hidden">
+      <p class="script-font" style="margin-bottom: 10px;">Ketuk kotak hadiah untuk membukanya 🎁</p>
+
+      <div class="gift-container" id="gift-container">
+        <div class="gift-box" onclick="openGift(event)"></div>
+      </div>
+
+      <div id="gift-status" style="font-size: 0.9rem; color: var(--text-muted); margin-top: 15px;"></div>
+    </div>
+
+    <div id="main-content" class="hidden">
+      
+      <section>
+        <div class="section-tagline">• SINCERE APOLOGY •</div>
+        <h1 class="hero-title">maafinn akuuu<br>cherr</h1>
+        <p style="color: var(--text-muted); font-size: 0.85rem; letter-spacing: 2px; font-weight: 600;">THE COZIEST APOLOGY</p>
+
+        <div class="coffee-cup-container">
+          <div class="coffee-steam-row">
+            <span class="steam">)~</span>
+            <span class="steam">(~</span>
+            <span class="steam">)~</span>
+          </div>
+          <div class="coffee-cup-wrapper">
+            <div class="coffee-cup">
+              <div class="cup-handle"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-tagline">— OUR COFFEE MOMENT —</div>
+        <div class="player-card">
+          <div class="coffee-scene-frame">
+            <span class="coffee-shop-ambience">☕  WARM CAFÉ VIBES</span>
+            
+            <div class="character-container">
+              <div class="character-avatar">🧔🏻‍♂️</div>
+              <span class="character-name">kamu</span>
+            </div>
+
+            <div class="table-setup-center">
+              <div class="apology-heart-badge">🤍</div>
+              <div class="steam-group">
+                <span class="steam-line">~</span>
+                <span class="steam-line">~</span>
+              </div>
+              <div class="shared-coffee-cup">☕</div>
+            </div>
+
+            <div class="character-container">
+              <div class="character-avatar">👩🏻</div>
+              <span class="character-name">aku</span>
+            </div>
+          </div>
+
+          <h3 style="font-family: 'Playfair Display', serif; font-size: 1.2rem; color: #f5deb3;">kopi enak karna secangkir bukan segalon</h3>
+          <p style="color: var(--text-muted); font-size: 0.88rem; margin-top: 6px;">just me and u and coffeee (now playing: You - LANY).</p>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-tagline">— A LETTER FOR YOU —</div>
+        <div class="letter-card">
+          <p style="color: var(--americano-soft); font-size: 0.85rem; margin-bottom: 12px; font-weight: 600;">Coffee Apology Letter</p>
+          <h3 style="font-family: 'Playfair Display', serif; font-size: 1.6rem; margin-bottom: 18px;">bonjour cherrr ☕</h3>
+          <p style="color: var(--text-muted); margin-bottom: 16px;">
+            "akuu minta maaff kalo aku sering ga sadar uda bikin kamu cape, akuu mintaa maaff untuk semua sikap aku yang mungkin nyakitin kamu tanpa aku sadari, kadang bukan maksudnya nyakitin karna bisa jadi karna ego aku."
+          </p>
+          <p style="color: var(--text-muted); margin-bottom: 16px;">
+            "terimakasii karenaa tetepp sabarr, tetepp adaa, dann tetep sayangg meski aku sering salahh, terimakasii jugaa uda bertahan bahkan di saat aku susah dimengerti, terimakasii karnaa setiapp kurangg kuu kamuu selaluu kasii lebii banyakk cintaa."
+          </p>
+          <p style="color: var(--text-muted); margin-bottom: 16px;">
+            "minta sowryyy juga buat kamu atas semua tingkah laku buruk aku sifat buruk aku tingginya ego aku dan semua rasa sakit yg aku kasi ke kamuu, i apologize for putting u through thattt"
+          </p>
+          <p style="color: var(--text-muted);">
+            i loveee youuuu bebebeeee<br>
+            <strong style="color: var(--americano-soft);">MDP</strong>
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-tagline">— MY FIRST GIFT —</div>
+        <h2 style="font-family: 'Playfair Display', serif;">Coffee Bean Bouquet</h2>
+        <p style="color: var(--text-muted); font-size: 0.88rem; margin-top: 5px;">setiap biji kopi menyimpan cerita kecil buat kamu</p>
+
+        <div class="bouquet-container">
+          <div class="flower-item" onclick="selectFlower(this, 'maafin aku ya kalo belakangan ini sempet bikin kamu kecewa.')">☕</div>
+          <div class="flower-item" onclick="selectFlower(this, 'im proud of uu atas semua hal sulit yang uda kamu lewatin, dan kamu masi bertahan sampe sekarangg.')">🤎</div>
+          <div class="flower-item" onclick="selectFlower(this, 'makasiii karna selalu sabar ngadepin sifat aku yang kadang nyebelin.')">✨</div>
+          <div class="flower-item" onclick="selectFlower(this, 'selama kita ga chatan aku bikin ini buat minta maaf ke kamu, maafinn akwuu yhhh...')">🌰</div>
+        </div>
+
+        <div id="flower-message" class="flower-card-message">
+          ketuk salah satu ikon di atas untuk membaca pesannya
+        </div>
+      </section>
+
+      <section>
+        <div class="section-tagline">OUR STORY</div>
+        <div class="section-title">our picture'ss</div>
+
+        <div class="gallery-grid">
+          <!-- Foto 1 -->
+          <div class="class-polaroid-card">
+            <div class="class-polaroid-img-frame">
+              <img src="foto1.jpeg" alt="First Pic" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+              <span style="display: none; font-size: 2.5rem;">📷</span>
+            </div>
+            
+            <div class="class-overlay-content">
+              <span class="camera-icon">📷</span>
+              <span class="class-develop-text">kenangan kita</span>
+            </div>
+
+            <div class="class-polaroid-caption">
+              <span class="class-polaroid-title">first pic</span>
+              <span class="class-polaroid-romance">"aku sm kamu jarang foto berdua, pengen nyiptain momen banyak tapi gengsi hihi"</span>
+            </div>
+          </div>
+
+          <!-- Foto 2 -->
+          <div class="class-polaroid-card">
+            <div class="class-polaroid-img-frame">
+              <img src="foto2.jpeg" alt="Second Pic" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+              <span style="display: none; font-size: 2.5rem;">📸</span>
+            </div>
+            
+            <div class="class-overlay-content">
+              <span class="camera-icon">📸</span>
+              <span class="class-develop-text">kenangan kita</span>
+            </div>
+
+            <div class="class-polaroid-caption">
+              <span class="class-polaroid-title">seccond pic</span>
+              <span class="class-polaroid-romance">"aku sayang sm kamuu cuma lagi lagi kehalang gengsi"</span>
+            </div>
+          </div>
+
+          <!-- Foto 3 -->
+          <div class="class-polaroid-card">
+            <div class="class-polaroid-img-frame">
+              <img src="foto3.jpeg" alt="Third Pic" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+              <span style="display: none; font-size: 2.5rem;">✨</span>
+            </div>
+            
+            <div class="class-overlay-content">
+              <span class="camera-icon">✨</span>
+              <span class="class-develop-text">kenangan kita</span>
+            </div>
+
+            <div class="class-polaroid-caption">
+              <span class="class-polaroid-title">third pic</span>
+              <span class="class-polaroid-romance">"aku bingung mau ngetik apalagii huhuhu"</span>
+            </div>
+          </div>
+
+          <!-- Foto 4 -->
+          <div class="class-polaroid-card">
+            <div class="class-polaroid-img-frame">
+              <img src="foto4.jpeg" alt="Fourth Pic" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+              <span style="display: none; font-size: 2.5rem;">💖</span>
+            </div>
+            
+            <div class="class-overlay-content">
+              <span class="camera-icon">💖</span>
+              <span class="class-develop-text">kenangan kita</span>
+            </div>
+
+            <div class="class-polaroid-caption">
+              <span class="class-polaroid-title">fourth pic</span>
+              <span class="class-polaroid-romance">"biru adalah cara aku untuk mencintaimu, aku ingin mengenal seluruh musim dalam dirimu"</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-tagline">— OUR JOURNEY —</div>
+        <h2 style="font-family: 'Playfair Display', serif;" class="section-title">bagaimana cerita kita dimulai</h2>
+
+        <div class="timeline-section">
+          <div class="timeline-line"></div>
+
+          <div class="class-timeline-item" onclick="toggleTimeline(this)">
+            <div class="class-timeline-dot"></div>
+            <div class="class-timeline-card">
+              <div class="class-timeline-header">
+                <span class="timeline-icon">☕</span>
+                <h3>Titik Awal</h3>
+                <span class="chevron-icon">❯</span>
+              </div>
+              <p class="class-timeline-preview">satu chat yang mengubah semuanya</p>
+              <div class="class-timeline-full-text">
+                2022 adalah awal dari cerita aku sama kamu dimulai, aku inget banget waktu itu aku ngechat kamu duluan buat nanyain id ml kalo ga salah.
+              </div>
+            </div>
+          </div>
+
+          <div class="class-timeline-item" onclick="toggleTimeline(this)">
+            <div class="class-timeline-dot"></div>
+            <div class="class-timeline-card">
+              <div class="class-timeline-header">
+                <span class="timeline-icon">💬</span>
+                <h3>Malam-Malam Panjang</h3>
+                <span class="chevron-icon">❯</span>
+              </div>
+              <p class="class-timeline-preview">Percakapan Tanpa Batas Waktu...</p>
+              <div class="class-timeline-full-text">
+                ngabisin waktu berjam-jam cuma buat chatingan dan berbagi isi kepala, awalnya aku ngerasa kalo ini bakal jadi chatan biasa antara aku dan kamu, krn emg kita uda berteman dari tk.
+              </div>
+            </div>
+          </div>
+
+          <div class="class-timeline-item" onclick="toggleTimeline(this)">
+            <div class="class-timeline-dot"></div>
+            <div class="class-timeline-card">
+              <div class="class-timeline-header">
+                <span class="timeline-icon">🤎</span>
+                <h3>Fallin</h3>
+                <span class="chevron-icon">❯</span>
+              </div>
+              <p class="class-timeline-preview">DENIAL...</p>
+              <div class="class-timeline-full-text">
+                entah uda berapa lama waktu itu kita chatan, aku mulai ngerasa nyaman sama kamu tapi aku berusaha menepis rasa itu krn belum yakin. tapi lama kelamaan aku sadar kalo aku emg beneran fallin love with you.
+              </div>
+            </div>
+          </div>
+
+          <div class="class-timeline-item" onclick="toggleTimeline(this)">
+            <div class="class-timeline-dot"></div>
+            <div class="class-timeline-card">
+              <div class="class-timeline-header">
+                <span class="timeline-icon">💌</span>
+                <h3>love</h3>
+                <span class="chevron-icon">❯</span>
+              </div>
+              <p class="class-timeline-preview">love 4 u...</p>
+              <div class="class-timeline-full-text">
+                aku bikin ini bukan sekedar buat minta maaf ke kamu tapi juga menuangkan isi hati aku selama ini yang aku pendam buat kamu, setelah kurang lebi 4 taun kita ngejalanin ini semua akhirnya aku sadar kalo emang aku sayang dan cinta sm kamu
+              </div>
+            </div>
+          </div>
+
+          <div class="class-timeline-item" onclick="toggleTimeline(this)">
+            <div class="class-timeline-dot"></div>
+            <div class="class-timeline-card">
+              <div class="class-timeline-header">
+                <span class="timeline-icon">🌱</span>
+                <h3>Bertumbuh Bersama</h3>
+                <span class="chevron-icon">❯</span>
+              </div>
+              <p class="class-timeline-preview">just M...</p>
+              <div class="class-timeline-full-text">
+                aku mau kamu selalu nemenin aku disetiap fase yang akan aku lewatin begitupun sebaliknyaaa
+              </div>
+            </div>
+          </div>
+
+          <div class="class-timeline-item" onclick="toggleTimeline(this)">
+            <div class="class-timeline-dot"></div>
+            <div class="class-timeline-card">
+              <div class="class-timeline-header">
+                <span class="timeline-icon">✨</span>
+                <h3>just youu</h3>
+                <span class="chevron-icon">❯</span>
+              </div>
+              <p class="class-timeline-preview">Rumah Abadi di Dalam Pelukanmu...</p>
+              <div class="class-timeline-full-text">
+                sama kamu aku ga perlu jadi orang lain, aku selalu ngerasa kamu rumah aku tapi aku sadar kalo selama ini aku belum bisa jadi kata "rumah" buat kamuu
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <section>
+        <div class="section-tagline">— FROM MY HEART TO YOURS —</div>
+        <h2 style="font-family: 'Playfair Display', serif;">Coffee Bean Jar of Apology</h2>
+        <p style="color: var(--text-muted); font-size: 0.88rem; margin-top: 5px;">Ketuk toples atau tombol untuk shaking biji kopi rahasia</p>
+        
+        <div id="jar-wrapper" class="jar-wrapper" onclick="shakeAndDrawJar()">
+          <div class="jar-lid"></div>
+          <div class="jar-neck"></div>
+          <div class="jar-body">
+            <div class="coffee-bean-item" style="--r: -15;">🫘</div>
+            <div class="coffee-bean-item" style="--r: 20;">☕</div>
+            <div class="coffee-bean-item" style="--r: -10;">🫘</div>
+            <div class="coffee-bean-item" style="--r: 12;">🤎</div>
+            <div class="coffee-bean-item" style="--r: -25;">🫘</div>
+            <div class="coffee-bean-item" style="--r: 18;">☕</div>
+            <div class="coffee-bean-item" style="--r: -5;">🤎</div>
+            <div class="coffee-bean-item" style="--r: 15;">🫘</div>
+          </div>
+        </div>
+
+        <button class="btn-primary" onclick="shakeAndDrawJar()" style="margin-top: 15px;">☕ Shake Toples Maaf</button>
+
+        <div id="jar-pop-card" class="jar-pop-card">
+          <p id="jar-note-text" style="font-style: italic; font-size: 0.98rem; line-height: 1.6; color: #fff;">
+            "Ketuk toples biji kopi di atas untuk mengetahui isinya..."
+          </p>
+          <span id="jar-note-counter" style="font-size: 0.78rem; color: var(--americano-soft); margin-top: 12px; display: block; font-weight: 600;">
+            PESAN 0 DARI 8
+          </span>
+        </div>
+      </section>
+
+      <footer style="text-align: center; padding: 40px 20px; color: var(--text-muted); font-size: 0.85rem; border-top: 1px solid rgba(255, 255, 255, 0.05); margin-top: 40px;">
+        <p>dibuat dengan segenap rasa ngantuk buat kamuu</p>
+      </footer>
+
+    </div>
+
+  </div>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => {
+        document.getElementById('screen-loading').classList.add('hidden');
+        document.getElementById('screen-lock').classList.remove('hidden');
+      }, 2000);
+    });
+
+    let currentPass = "";
+    
+    function pressKey(num) {
+      if (currentPass.length < 5) {
+        currentPass += num;
+        updateDots();
+      }
+    }
+
+    function clearKey() {
+      currentPass = "";
+      updateDots();
+    }
+
+    function updateDots() {
+      const dots = document.querySelectorAll('.dot');
+      dots.forEach((dot, index) => {
+        if (index < currentPass.length) {
+          dot.classList.add('filled');
+        } else {
+          dot.classList.remove('filled');
+        }
+      });
+    }
+
+    function submitPasscode() {
+      if (currentPass === "34713") {
+        document.getElementById('screen-lock').classList.add('hidden');
+        document.getElementById('screen-gift').classList.remove('hidden');
+      } else {
+        alert("Kode salah, sayang! Coba ingat kembali kode rahasia kita (34713)...");
+        clearKey();
+      }
+    }
+
+    // Fungsi Putar Musik Otomatis Saat Kado Dibuka & Interaksi Pertama
+    function openGift(e) {
+      const music = document.getElementById('bg-music');
+      const musicBtn = document.getElementById('music-btn');
+      
+      if (music) {
+        music.play().then(() => {
+          musicBtn.innerHTML = "⏸️ Jeda Musik";
+        }).catch(err => console.log("Autoplay dicegah browser:", err));
+      }
+
+      const container = document.getElementById('gift-container');
+      
+      const emojis = ['☕', '🤎', '✨', '🌰', '🤎', '⭐', '☕'];
+      for (let i = 0; i < 20; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'flower-particle';
+        particle.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+        
+        const angle = Math.random() * Math.PI * 2;
+        const distance = 80 + Math.random() * 120;
+        const tx = Math.cos(angle) * distance;
+        const ty = Math.sin(angle) * distance;
+        const rot = Math.random() * 360;
+
+        particle.style.setProperty('--tx', `${tx}px`);
+        particle.style.setProperty('--ty', `${ty}px`);
+        particle.style.setProperty('--rot', `${rot}deg`);
+        particle.style.left = '50%';
+        particle.style.top = '50%';
+
+        container.appendChild(particle);
+        setTimeout(() => particle.remove(), 1200);
+      }
+
+      if (typeof confetti === 'function') {
+        confetti({
+          particleCount: 110,
+          spread: 75,
+          origin: { y: 0.6 },
+          colors: ['#d4935f', '#f0c3a5', '#f5deb3', '#ffffff']
+        });
+      }
+
+      setTimeout(() => {
+        document.getElementById('screen-gift').classList.add('hidden');
+        document.getElementById('main-content').classList.remove('hidden');
+      }, 800);
+    }
+
+    // Fungsi Tombol Musik Melayang (Play/Pause)
+    function toggleMusic() {
+      const music = document.getElementById('bg-music');
+      const btn = document.getElementById('music-btn');
+      
+      if (music.paused) {
+        music.play();
+        btn.innerHTML = "⏸️ Jeda Musik";
+      } else {
+        music.pause();
+        btn.innerHTML = "🎵 Putar \"You\" - LANY";
+      }
+    }
+
+    function selectFlower(element, message) {
+      document.querySelectorAll('.flower-item').forEach(el => el.classList.remove('active'));
+      element.classList.add('active');
+
+      const msgBox = document.getElementById('flower-message');
+      msgBox.style.opacity = '0';
+      setTimeout(() => {
+        msgBox.innerText = `"${message}"`;
+        msgBox.style.opacity = '1';
+      }, 150);
+    }
+
+    function toggleTimeline(item) {
+      const isActive = item.classList.contains('active');
+      
+      document.querySelectorAll('.class-timeline-item').forEach(el => {
+        el.classList.remove('active');
+      });
+
+      if (!isActive) {
+        item.classList.add('active');
+      }
+    }
+
+    const apologyNotes = [
+      "aku pengen banget ngomong ini didepan kamu tapi malu",
+      "semoga semesta selalu memberikan kemudahan atas segala usahamuuu, semoga doamu terkabul satu persatuu",
+      "i'll forever be proud of youu, cherr. bcs i know u're trying ur best everyday.",
+      "idk how to cheer up on ur bad days, but i'll always pray for ur successs",
+      "the stars would be so proud to know their atoms created someone like youu",
+      "for all the days that you made me feel loved and appreciated, i am out of words to tell how gratefull i am to have youu",
+      "walaupun aku perna ada fase nemuin orang baru, but i never loved anyone the way i love youu and i mean that with my whole heart",
+      "TERIMAKASIIII DAN MAAFFFFF"
+    ];
+
+    let drawnCount = 0;
+
+    function shakeAndDrawJar() {
+      const jarWrapper = document.getElementById('jar-wrapper');
+      const popCard = document.getElementById('jar-pop-card');
+      const noteText = document.getElementById('jar-note-text');
+      const noteCounter = document.getElementById('jar-note-counter');
+
+      jarWrapper.classList.add('shake', 'open');
+
+      setTimeout(() => {
+        jarWrapper.classList.remove('shake');
+      }, 500);
+
+      const jarRect = jarWrapper.getBoundingClientRect();
+      const cardRect = popCard.getBoundingClientRect();
+
+      const flyingBean = document.createElement('div');
+      flyingBean.className = 'flying-bean';
+      flyingBean.innerText = '🫘';
+      flyingBean.style.left = `${jarRect.left + jarRect.width / 2 - 15}px`;
+      flyingBean.style.top = `${jarRect.top + 20}px`;
+      document.body.appendChild(flyingBean);
+
+      setTimeout(() => {
+        flyingBean.style.left = `${cardRect.left + 30}px`;
+        flyingBean.style.top = `${cardRect.top + 10}px`;
+        flyingBean.style.transform = 'scale(1.5) rotate(360deg)';
+        flyingBean.style.opacity = '0';
+      }, 50);
+
+      setTimeout(() => {
+        flyingBean.remove();
+      }, 800);
+
+      if (drawnCount < apologyNotes.length) {
+        const selectedNote = apologyNotes[drawnCount];
+        drawnCount++;
+
+        popCard.classList.remove('active');
+        setTimeout(() => {
+          noteText.innerText = `"${selectedNote}"`;
+          noteCounter.innerText = `PESAN ${drawnCount} DARI ${apologyNotes.length}`;
+          popCard.classList.add('active');
+        }, 300);
+      } else {
+        drawnCount = 0;
+        popCard.classList.remove('active');
+        setTimeout(() => {
+          noteText.innerText = `"Semua pesan maaf ini bener bener aku ketik dengan segenap rasa ngantuk dan kelelahan, ini aku digigitin nyamuk. maafin aku ya, cherr."`;
+          noteCounter.innerText = `SELESAI — SEMUA PESAN TELAH KELUAR ❤️`;
+          popCard.classList.add('active');
+        }, 300);
+      }
+    }
+  </script>
+</body>
+</html>
